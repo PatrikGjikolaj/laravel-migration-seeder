@@ -1,7 +1,11 @@
 <header class="p-3">
-    <img class="logo" src="{{ Vite::asset('resources/img/logo.png') }}" alt="Laravel Logo">
-    <span>Some links: </span>
-    @foreach ($links as $link)
-        <a href="{{ $link['href'] }}">{{ $link['text'] }}</a>
-    @endforeach
+<div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-auto m-auto">
+                <h1>Treni in partenza</h1>
+            </div>
+        </div>
+    </div>
+</div>
 </header>
