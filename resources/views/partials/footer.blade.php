@@ -1,1 +1,3 @@
-{{-- <footer class="p-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</footer> --}}
+<div class="container-fluid headerFooterSize bg-dark">
+
+</div>

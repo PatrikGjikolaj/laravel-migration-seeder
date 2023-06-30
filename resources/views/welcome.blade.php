@@ -1,29 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid bg-warning">
-    <div class="container py-3">
+<div class="container-fluid bg-dark mainSize">
+    <div class="container tableSize overflow-auto">
         <div class="row g-4">
-            @foreach ($trains as $train)
-                {{-- @if ($train->data_di_partenza == "2023-06-30") --}}
-                    <div class="col-3 ">
-                        <div class="card p-3 bg-success text-white">
-                            <p>Codice treno: {{$train->Codice_treno}}</p>
-                            <h4>Compagnia: {{$train->azienda}}</h4>
-                            <p>Stazione di partenza: {{ $train->stazione_di_partenza }}</p>
-                            <p>Orario di partenza: {{ $train->orario_di_partenza }}</p>
-                            <p>Stazione di partenza: {{ $train->stazione_di_arrivo }}</p>
-                            <p>Orario di partenza: {{ $train->orario_di_arrivo }}</p>
-                            @if ($train->in_orario > 0)
-                            <p>Ritardo: +{{ $train->in_orario }} minuti</p>
-                            @endif
-                            @if ($train->cancellato == 1)
-                            <p>Stato: Cancellato</p>
-                            @endif
-                        </div>
-                    </div>
-                {{-- @endif --}}
-            @endforeach
+            <table class="table table-warning table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Codice treno</th>
+                    <th scope="col">Compagnia</th>
+                    <th scope="col">Data di partenza</th>
+                    <th scope="col">Stazione di partenza</th>
+                    <th scope="col">Stazione di arrivo</th>
+                    <th scope="col">Orario di partenza</th>
+                    <th scope="col">Orario di arrivo</th>
+                    <th scope="col">Ritardo</th>
+                    <th scope="col">Stato</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach ($trains as $train)
+                        @if ($train->data_di_partenza == "2023-06-30")
+                            <tr>
+                                <td>{{$train->Codice_treno}}</th>
+                                <td>{{$train->azienda}}</td>
+                                <td>{{ $train->data_di_partenza }}</td>
+                                <td>{{ $train->stazione_di_partenza }}</td>
+                                <td>{{ $train->stazione_di_arrivo }}</td>
+                                <td>{{ $train->orario_di_partenza }}</td>
+                                <td>{{ $train->orario_di_arrivo }}</td>
+                                <td>+ {{ $train->in_orario }} min</td>
+                                @if ($train->cancellato == 1)
+                                    <td class="text-danger">Annullato</td>
+                                @else
+                                    <td class="text-success">Valido</td>
+                                @endif
+                            </tr>
+                        @endif
+                    @endforeach
+                </tbody>
+              </table>
         </div>
     </div>
 </div>

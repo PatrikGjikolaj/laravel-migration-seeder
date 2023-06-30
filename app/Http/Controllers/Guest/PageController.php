@@ -14,7 +14,7 @@ class PageController extends Controller
         // $links = config('store.someLinks');
 
         //Recupero i libri dal database
-        $trains = Trains::all();
+        $trains = Trains::orderBy('orario_di_partenza')->get();
 
         return view('welcome', compact("trains") );
     }
